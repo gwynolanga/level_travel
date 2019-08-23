@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-12">
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @buildings.each_with_index do |building, index| %>
+          <tr>
+            <th><%= index + 1 %></th>
+            <td><%= building.name %></td>
+            <td><%= building.address %></td>
+            <td><%= building.latitude %></td>
+            <td><%= building.longitude %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
