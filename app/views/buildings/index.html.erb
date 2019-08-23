@@ -1,32 +1,48 @@
 <div class="row">
   <div class="col-md-12">
-
+    ЗДЕСЬ БУДЕТ КАРТА
   </div>
 </div>
 
-<div class="row">
-  <div class="col-12">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Address</th>
-          <th>Latitude</th>
-          <th>Longitude</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @buildings.each_with_index do |building, index| %>
-          <tr>
-            <th><%= index + 1 %></th>
-            <td><%= building.name %></td>
-            <td><%= building.address %></td>
-            <td><%= building.latitude %></td>
-            <td><%= building.longitude %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+<div class="card">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#table_of_buildings" id="item1">Table of buildings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#create_building" id="item2">Create building</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" data-toggle="tab" href="#edit_building" id="item3">Edit building</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body tab-content">
+    <div class="tab-pane fade show active" id="table_of_buildings">
+      <div class="row">
+        <div class="col-12">
+          <%= render(partial: 'buildings/table', locals: { buildings: @buildings }) %>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="create_building">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <%= render('form') %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="edit_building">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <%= render('form') %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

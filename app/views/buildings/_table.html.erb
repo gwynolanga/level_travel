@@ -1,0 +1,27 @@
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @buildings.each_with_index do |building, index| %>
+    <tr id="<%= building.id %>">
+      <th><%= index + 1 %></th>
+      <td><%= building.name %></td>
+      <td><%= building.address %></td>
+      <td><%= building.latitude %></td>
+      <td><%= building.longitude %></td>
+      <td>
+        <%= link_to('Edit', edit_building_path(building.id), remote: true) %>
+        |
+        <%= link_to('Destroy', building_path(building.id), method: :delete, data: { confirm: 'Are you sure you want to destroy the building?' }) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

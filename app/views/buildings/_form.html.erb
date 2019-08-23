@@ -1,0 +1,21 @@
+<%= bootstrap_form_for(@building, remote: true) do |f| %>
+  <div class="row">
+    <div class="col-12">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-5">
+      <%= f.text_field :city %>
+    </div>
+    <div class="col-5">
+      <%= f.text_field :street %>
+    </div>
+    <div class="col-2">
+      <%= f.text_field :house_number %>
+    </div>
+  </div>
+
+  <%= f.submit 'Save', class: 'btn btn-primary' %>
+<% end %>

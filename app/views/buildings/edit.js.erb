@@ -1,0 +1,4 @@
+$('#item1').removeClass('active');
+$('#item3').removeClass('disabled').addClass('active');
+$('#table_of_buildings').removeClass('show active');
+$('#edit_building').addClass('show active').find('div.col-12').html("<%= j(render('buildings/form')) %>");
