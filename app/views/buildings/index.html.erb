@@ -1,7 +1,13 @@
 <div class="row">
-  <div class="col-md-12">
-    ЗДЕСЬ БУДЕТ КАРТА
+  <div class="col-12">
+    <% if @buildings.present? %>
+      <div class="building-map" id="mapid"></div>
+    <% end %>
   </div>
+</div>
+
+<div id="flash-message">
+  <%= render(partial: 'layouts/flash_message') %>
 </div>
 
 <div class="card">
@@ -22,7 +28,11 @@
     <div class="tab-pane fade show active" id="table_of_buildings">
       <div class="row">
         <div class="col-12">
-          <%= render(partial: 'buildings/table', locals: { buildings: @buildings }) %>
+          <% if @buildings.present? %>
+            <%= render(partial: 'table', locals: { buildings: @buildings }) %>
+          <% else %>
+            Нет данных
+          <% end %>
         </div>
       </div>
     </div>
@@ -30,7 +40,7 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <%= render('form') %>
+            <%= render(partial: 'form', locals: { url: buildings_path, method: :post }) %>
           </div>
         </div>
       </div>
@@ -38,9 +48,7 @@
     <div class="tab-pane fade" id="edit_building">
       <div class="container">
         <div class="row">
-          <div class="col-12">
-            <%= render('form') %>
-          </div>
+          <div class="col-12"></div>
         </div>
       </div>
     </div>

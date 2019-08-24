@@ -1,1 +1,6 @@
-$('#create_building').addClass('show active').find('div.col-12').html("<%= j(render('buildings/form')) %>");
+$('#create_building').addClass('show active').find('div.col-12').html("<%= j(render(partial: 'form', locals: { url: buildings_path, method: :post })) %>");
+$('#flash-message').html("<%= j(render(partial: 'layouts/flash_message')) %>");
+
+setTimeout(function() {
+  $(".alert").alert('close');
+}, 3000);

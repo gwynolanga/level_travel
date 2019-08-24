@@ -6,6 +6,9 @@
     <th>Address</th>
     <th>Latitude</th>
     <th>Longitude</th>
+    <% if request.format.js? %>
+      <th>Distance (km)</th>
+    <% end %>
     <th>Actions</th>
   </tr>
   </thead>
@@ -17,6 +20,9 @@
       <td><%= building.address %></td>
       <td><%= building.latitude %></td>
       <td><%= building.longitude %></td>
+      <% if request.format.js? %>
+        <td><%= building.distance %></td>
+      <% end %>
       <td>
         <%= link_to('Edit', edit_building_path(building.id), remote: true) %>
         |

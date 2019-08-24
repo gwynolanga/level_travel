@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(@building, remote: true) do |f| %>
+<%= bootstrap_form_for(@building_form, url: url, method: method, remote: true) do |f| %>
   <div class="row">
     <div class="col-12">
       <%= f.text_field :name %>
@@ -13,7 +13,7 @@
       <%= f.text_field :street %>
     </div>
     <div class="col-2">
-      <%= f.text_field :house_number %>
+      <%= f.text_field :building_number %>
     </div>
   </div>
 

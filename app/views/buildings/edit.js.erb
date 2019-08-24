@@ -1,4 +1,9 @@
 $('#item1').removeClass('active');
 $('#item3').removeClass('disabled').addClass('active');
 $('#table_of_buildings').removeClass('show active');
-$('#edit_building').addClass('show active').find('div.col-12').html("<%= j(render('buildings/form')) %>");
+$('#edit_building').addClass('show active').find('div.col-12').html("<%= j(render(partial: 'form', locals: { url: building_path(@building), method: :put })) %>");
+$('#flash-message').html("<%= j(render(partial: 'layouts/flash_message')) %>");
+
+setTimeout(function() {
+  $(".alert").alert('close');
+}, 3000);
