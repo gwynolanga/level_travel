@@ -28,6 +28,11 @@
 /config/master.key
 
 .idea
+.idea/level_travel.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
 
 # Ignore application configuration
 /config/application.yml
