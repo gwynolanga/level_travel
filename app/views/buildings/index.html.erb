@@ -1,56 +1,11 @@
 <div class="row">
   <div class="col-12">
-    <% if @buildings.present? %>
-      <div class="building-map" id="mapid"></div>
-    <% end %>
+    <div class="building-map" id="mapid"></div>
   </div>
 </div>
 
-<div id="flash-message">
-  <%= render(partial: 'layouts/flash_message') %>
-</div>
-
-<div class="card">
-  <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#table_of_buildings" id="item1">Table of buildings</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#create_building" id="item2">Create building</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" data-toggle="tab" href="#edit_building" id="item3">Edit building</a>
-      </li>
-    </ul>
-  </div>
-  <div class="card-body tab-content">
-    <div class="tab-pane fade show active" id="table_of_buildings">
-      <div class="row">
-        <div class="col-12">
-          <% if @buildings.present? %>
-            <%= render(partial: 'table', locals: { buildings: @buildings }) %>
-          <% else %>
-            Нет данных
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="tab-pane fade" id="create_building">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <%= render(partial: 'form', locals: { url: buildings_path, method: :post }) %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="tab-pane fade" id="edit_building">
-      <div class="container">
-        <div class="row">
-          <div class="col-12"></div>
-        </div>
-      </div>
-    </div>
+<div class="row" id="table_of_buildings">
+  <div class="col-12">
+    <%= render(partial: 'table', locals: { buildings: @buildings }) %>
   </div>
 </div>

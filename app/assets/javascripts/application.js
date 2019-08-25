@@ -6,28 +6,23 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
-  setTimeout(function() {
-    $(".alert").alert('close');
-  }, 3000);
-
-  let kill_item3 = function() {
-    $('#item3').addClass('disabled').removeClass('active');
-    $('#edit_building').removeClass('show active');
-    
-    if ($(this)[0].id === 'create_building') {
-      $( ".has-error" ).remove();
-    }
-  };
-
-  $('#item1').on('click', kill_item3);
-  $('#item2').on('click', kill_item3);
-
   if (gon.buildings.length !== 0) {
-    let map = L.map('mapid').setView([gon.random_building.latitude, gon.random_building.longitude], 14);
+    let map = L.map('mapid', { attributionControl: false}).setView([gon.random_building.latitude, gon.random_building.longitude], 16);
 
-    L.tileLayer('https://maps.heigit.org/openmapsurfer/tiles/roads/webmercator/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-    }).addTo(map);
+    // leaflet-plugin aka Yandex map tileLayer
+    // Yandex maps do not work correctly on Mozilla Firefox, use Google Chrome:
+    // https://github.com/shramov/leaflet-plugins/issues/293
+    // https://github.com/shramov/leaflet-plugins/issues/294
+    //
+    // Comment the lines of code if you do not want to use Yandex maps
+    let yandexLayer = new L.yandex();
+    map.addLayer(yandexLayer);
+
+    // Uncomment the lines of code for using the alternative tileLayer
+    // tileLayer works in any browser
+    // L.tileLayer('https://maps.heigit.org/openmapsurfer/tiles/roads/webmercator/{z}/{x}/{y}.png', {
+    //   maxZoom: 18,
+    // }).addTo(map);
 
     $.each(gon.buildings, function(index, object) {
       let address = `${object.address}`;
@@ -41,7 +36,7 @@ $(document).on('turbolinks:load', function() {
     function onMapClick(e) {
       popup
         .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
+        .setContent("Вы щёлкнули на карту в точке " + e.latlng.toString())
         .openOn(map);
 
       $.ajax({
