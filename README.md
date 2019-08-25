@@ -1,24 +1,57 @@
-# README
+# Тестовое задание для компании Level.Travel
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Тестовое задание:
 
-Things you may want to cover:
+1. Сгенерировать базу данных случайных зданий в Москве, достаточно 50 записей. 
+Поля: адрес, координаты. Здания должны быть реальными.
 
-* Ruby version
+2. Создать одностраничное приложение. В верхней части страницы – карта. 
+Можно использовать любое api: яндекс, гугл, 2гис.
+При щелчке по карте сразу под ней выводится таблица в которой показаны:
+- все здания из базы в радиусе 4км от места щелчка,
+- расстояние от щелчка до каждого из этих зданий
+Таблица должна быть отсортирована по расстоянию от места щелчка.
 
-* System dependencies
+Код выложить на github, по возможности задеплоить на Heroku
 
-* Configuration
 
-* Database creation
+# Запуск приложения
 
-* Database initialization
+Для того, чтобы запустить приложение, выполните следующие команды у себя в окне терминала:
 
-* How to run the test suite
+* Склонируйте репозиторий с GitHub и перейдите в папку приложения:
+```
+git clone https://github.com/cuurjol/level_travel.git
+cd level_travel
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+* Установите необходимые гемы приложения, указанные в файле `Gemfile`:
+```
+bundle install
+```
 
-* Deployment instructions
+* Запустите миграции для базы данных и файл `seeds.rb` для создания записей в базу данных:
+```
+bundle exec rake db:migrate
+bundle exec rake db:seed
+```
+Приложение использует СУБД `Postgressql`. При необходимости создайте нового пользователя в СУБД для этого приложения 
+или измените СУБД на другую, изменив настройки файла `config/database.yml`.
 
-* ...
+* Приложение использует гем [figaro](https://github.com/laserlemon/figaro) для скрытия API ключа Yandex maps от 3-их лиц.
+Установите гем figaro и воспользуйтесь своим API ключом следующим образом:
+```
+# config/application.yml
+
+YANDEX_API_KEY: "YOUR-API-KEY"
+```
+
+* Запустите приложение:
+```
+bundle exec rails server
+```
+
+# Демоверсия приложения
+
+Приложение было опубликованно удалённо на сервере Heroku. С рабочей версией приложения можно ознакомиться на 
+[сайте](https://cuurjol-level-travel.herokuapp.com/).
