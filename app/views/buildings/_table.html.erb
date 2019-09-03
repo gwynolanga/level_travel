@@ -12,9 +12,9 @@
   </tr>
   </thead>
   <tbody>
-  <% buildings.each_with_index do |building, index| %>
+  <% buildings.each.with_index(1) do |building, index| %>
     <tr id="<%= building.id %>">
-      <th><%= index + 1 %></th>
+      <th><%= index %></th>
       <td><%= building.name %></td>
       <td><%= building.address %></td>
       <td><%= building.latitude %></td>
