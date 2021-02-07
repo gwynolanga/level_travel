@@ -35,7 +35,7 @@ bundle install
 bundle exec rake db:migrate
 bundle exec rake db:seed
 ```
-Приложение использует СУБД `Postgressql`. При необходимости создайте нового пользователя в СУБД для этого приложения 
+Приложение использует СУБД `Postgresql`. При необходимости создайте нового пользователя в СУБД для этого приложения 
 или измените СУБД на другую, изменив настройки файла `config/database.yml`.
 
 * Приложение использует гем [figaro](https://github.com/laserlemon/figaro) для скрытия API ключа Yandex maps от 3-их лиц.
